@@ -22,6 +22,6 @@ conda activate py37
 source ~/ai/test_env_ws/devel/setup.bash
 python3 ros_pcd.py
 
-终端三：cd ~/ai/orb_slam2_dense_ws
+终端3：cd ~/ai/orb_slam2_dense_ws
 source devel/setup.bash
 roslaunch orb_slam2_dense tum_pioneer.launch
