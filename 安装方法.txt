@@ -1,0 +1,89 @@
+先安装胖果林：
+
+cd ~/ai/libs/Pangolin-master
+
+sudo apt install libglew-dev
+
+mkdir build && cd build
+
+cmake ..
+make
+
+sudo make install
+
+
+
+
+
+cd ~/ai/ORB_SLAM2_DENSE_ws/src/ORB-SLAM2_DENSE
+./build.sh
+
+
+报错：Pangolin could not be found because dependency Eigen3 could not be found.
+
+解决办法：
+不需要重新安装Pangolin及Eigen，修改CMakeLists.txt如下：
+在find_package(Eigen3 REQUIRED)后加NO_MUDULE,
+
+find_package(Eigen3 REQUIRED NO_MODULE)
+1
+然后重建编译即可成功！
+原文链接：https://blog.csdn.net/weixin_44401286/article/details/124348880
+
+
+
+报错：  requested version "1.7.2".
+
+  The following configuration files were considered but not accepted:
+
+    /usr/lib/x86_64-linux-gnu/cmake/pcl/PCLConfig.cmake, version: 1.8.1
+    
+    
+解决：
+#set(PCL_DIR "/usr/share/pcl-1.7")
+#find_package( PCL 1.7.2 EXACT REQUIRED )
+
+set(PCL_DIR "/usr/include/pcl-1.8")
+find_package( PCL 1.8.1 EXACT REQUIRED )
+
+
+问题：编译内存不够卡死
+make -j4
+改为
+make -j1
+
+catkin_make -j1
+
+
+
+运行：
+
+ERROR: cannot launch node of type [octomap_server/octomap_server_node]: octomap_server
+
+
+sudo apt install ros-melodic-octomap-server
+
+
+
+libpango_core.so: cannot open shared object file: No such file or directory
+
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
+
+
+
+PCL库的一些操作会导致程序段错误，可能是因为pcl版本问题
+
+
+原版代码BUG修改：
+
+
+1.显示不了彩色点云，因为压缩点云之后透明度变成0了，直接将pointT由RGBA改为RGB即可
+
+2.launch问题，文件夹名字改为小写即可
+
+
+
+
+
+
+

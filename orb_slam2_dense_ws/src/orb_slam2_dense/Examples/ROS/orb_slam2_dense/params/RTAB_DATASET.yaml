@@ -1,0 +1,107 @@
+%YAML:1.0
+
+#--------------------------------------------------------------------------------------------
+# Camera Parameters. Adjust them!
+#--------------------------------------------------------------------------------------------
+
+# Camera calibration and distortion parameters (OpenCV) 
+
+#D: [0.07270573116068803, -0.18543929362134534, -0.0011832045804703304, -0.0034080201993029564, 0.0]  k1,k2,p1,p2,k3
+#K: [546.0500834384593, 0.0, 318.26543549764034, 0.0, 545.7495208147751, 235.530988776277, 0.0, 0.0, 1.0]
+#R: [1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0]
+#P: [546.8461303710938, 0.0, 315.7269048503658, 0.0, 0.0, 549.0361938476562, 234.61483550908815, 0.0, 0.0, 0.0, 1.0, 0.0]
+
+
+Camera.fx: 546.0500834384593
+Camera.fy: 545.7495208147751
+Camera.cx: 318.26543549764034
+Camera.cy: 235.530988776277
+
+Camera.k1: 0.0 #0.07270573116068803
+Camera.k2: 0.0 #-0.18543929362134534
+Camera.p1: 0.0 #-0.0011832045804703304
+Camera.p2: 0.0 #-0.0034080201993029564
+Camera.k3: 0.0
+
+Camera.width: 640
+Camera.height: 480
+
+# Camera frames per second 
+Camera.fps: 30.0
+
+# IR projector baseline times fx (aprox.)
+Camera.bf: 40.0
+
+# Color order of the images (0: BGR, 1: RGB. It is ignored if images are grayscale)
+Camera.RGB: 1
+
+# Close/Far threshold. Baseline times.
+ThDepth: 40.0
+
+# Deptmap values factor 
+DepthMapFactor: 1.0 #5208.0 #1
+#must be 1.0 !!! , otherwise, [ WARN] [1662270710.315276253]: Nothing to publish, octree is empty
+
+#--------------------------------------------------------------------------------------------
+# ORB Parameters
+#--------------------------------------------------------------------------------------------
+
+# ORB Extractor: Number of features per image
+ORBextractor.nFeatures: 1000
+
+# ORB Extractor: Scale factor between levels in the scale pyramid 	
+ORBextractor.scaleFactor: 1.2
+
+# ORB Extractor: Number of levels in the scale pyramid	
+ORBextractor.nLevels: 8
+
+# ORB Extractor: Fast threshold
+# Image is divided in a grid. At each cell FAST are extracted imposing a minimum response.
+# Firstly we impose iniThFAST. If no corners are detected we impose a lower value minThFAST
+# You can lower these values if your images have low contrast			
+ORBextractor.iniThFAST: 20
+ORBextractor.minThFAST: 7
+
+
+
+# PointCloud Parameters
+#0 0 0.7 -1.5708 0 -1.736103
+
+# x: 0.0
+# y: 0.0
+# z: 0.6
+# roll: -1.705
+# pitch: 0.0
+# yaw: -1.57
+
+#注意这里的配置和launch文件里的roll,pitch,yaw不太一样
+PointCloudMapping:
+  ResolutionX: 0.01
+  ResolutionY: 0.01
+  ResolutionZ: 0.01 #0.05
+  Tbc:
+    x: 0.0
+    y: 0.0
+    z: 0.326921
+    roll: 1.5708
+    pitch: 1.5708
+    yaw: 3.14159
+    
+  StatisticFilter:
+    MeanK: 50
+    Thres: 2.0
+
+
+#--------------------------------------------------------------------------------------------
+# Viewer Parameters
+#--------------------------------------------------------------------------------------------
+Viewer.KeyFrameSize: 0.05
+Viewer.KeyFrameLineWidth: 1
+Viewer.GraphLineWidth: 0.9
+Viewer.PointSize: 2
+Viewer.CameraSize: 0.08
+Viewer.CameraLineWidth: 3
+Viewer.ViewpointX: 0
+Viewer.ViewpointY: -0.7
+Viewer.ViewpointZ: -1.8
+Viewer.ViewpointF: 500
